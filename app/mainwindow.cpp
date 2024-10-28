@@ -3,13 +3,36 @@
 #include <QFileDialog>
 #include <QDebug>
 #include <QMessageBox>
+#include <QVBoxLayout>
+#include <QSplitter>
+#include <QTreeView>
 #include "generated/version.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     createMenus();
-    setCentralWidget(&editor);
+    auto *mainWidget = new QWidget(this);
+    auto *mainLayout = new QVBoxLayout(mainWidget);
+    auto splitterHorizontal = new QSplitter;
+    splitterHorizontal->setOrientation(Qt::Vertical);
+    auto *splitterVertical = new QSplitter;
+    splitterVertical->setOrientation(Qt::Horizontal);
+    auto *treeView = new QTreeView;
+    treeView->setMinimumWidth(5);
+    splitterVertical->addWidget(treeView);
+    splitterVertical->addWidget(&editor);
+    auto *bottomPanel = new QWidget;
+    QList<int> sizes1;
+    sizes1 << 250 << 1000;
+    splitterVertical->setSizes(sizes1);
+    splitterHorizontal->addWidget(splitterVertical);
+    splitterHorizontal->addWidget(bottomPanel);
+    QList<int> sizes2;
+    sizes2 << 320 << 180;
+    splitterHorizontal->setSizes(sizes2);
+    mainLayout->addWidget(splitterHorizontal);
+    setCentralWidget(mainWidget);
 }
 
 void MainWindow::createMenus() {

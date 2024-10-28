@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     MainWindow mainWindow;
-    mainWindow.resize(800, 600);
+    mainWindow.resize(1250, 900);
     QScreen* screen = app.primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (screenGeometry.width() - mainWindow.width()) / 2;
