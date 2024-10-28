@@ -7,11 +7,11 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+    QPlainTextEdit editor;
+    void createMenus();
+    void openFile();
 public:
     MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-private:
-    QPlainTextEdit editor;
+    ~MainWindow() = default;
 };
 #endif // MAINWINDOW_H
