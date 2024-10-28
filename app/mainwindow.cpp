@@ -44,12 +44,13 @@ void MainWindow::about() {
     QPixmap customIcon(":/share/eudaimonia.png");;
     QMessageBox msgBox(this);
     msgBox.setWindowTitle(tr("About Eudaimonia %1").arg(APP_VERSION));
+    QString Git_commit = GIT_COMMIT_HASH;
     msgBox.setText("<p><b>Eudaimonia</b> is Qt-based C++ IDE"
                    "<p>Copyright (C) 2024 Andrzej Borucki &lt;borucki.andrzej@gmail.com&gt;</p>"
                    "<p>This is free software; see the source for copying conditions. There is NO warranty; not "
-                   "even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The source code for Eudaimonia is "
+                   "even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</p><p>The source code for Eudaimonia is "
                    "available at <a href=\"https://github.com/ideorg/eudaimonia\"> "
-                   "https://github.com/ideorg/eudaimonia</a>.</p>");
+                   "https://github.com/ideorg/eudaimonia</a>.</p>Git commit: " + Git_commit);
     msgBox.setIconPixmap(customIcon);
     msgBox.exec();
 }

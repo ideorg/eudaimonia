@@ -13,6 +13,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
+if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
+    find_package(Git)
+    if(GIT_FOUND)
+        execute_process(
+                COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
+                WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+                OUTPUT_VARIABLE "GIT_COMMIT_HASH"
+                OUTPUT_STRIP_TRAILING_WHITESPACE)
+        message(STATUS "Git commit hash: ${GIT_COMMIT_HASH}")
+    endif()
+endif()
 configure_file(cmake/version.hpp.in ${CMAKE_BINARY_DIR}/generated/version.hpp)
 include_directories(${CMAKE_BINARY_DIR})
 
