@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
     createMenus();
     tabWidget.setTabsClosable(true);
     tabWidget.setMovable(true);
+    connect(&tabWidget, &QTabWidget::tabCloseRequested, this, [this](int index) {
+        tabWidget.removeTab(index);
+    });
     auto *mainWidget = new QWidget(this);
     auto *mainLayout = new QVBoxLayout(mainWidget);
     auto splitterHorizontal = new QSplitter;
