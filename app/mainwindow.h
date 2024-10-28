@@ -10,6 +10,8 @@ class MainWindow : public QMainWindow
     QPlainTextEdit editor;
     void createMenus();
     void openFile();
+    void about();
+    void aboutQt();
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow() = default;
