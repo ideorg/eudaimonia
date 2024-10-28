@@ -74,7 +74,7 @@ void MainWindow::openFile() {
 }
 
 void MainWindow::about() {
-    QPixmap customIcon(":/share/eudaimonia.png");;
+    QPixmap customIcon(":/share/eudaimonia.png");
     QMessageBox msgBox(this);
     msgBox.setWindowTitle(tr("About Eudaimonia %1").arg(APP_VERSION));
     QString Git_commit = GIT_COMMIT_HASH;
