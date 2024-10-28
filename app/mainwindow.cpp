@@ -43,8 +43,13 @@ void MainWindow::openFile() {
 void MainWindow::about() {
     QPixmap customIcon(":/share/eudaimonia.png");;
     QMessageBox msgBox(this);
-    msgBox.setWindowTitle("About Eudaimonia");
-    msgBox.setText("This is a custom About box with a custom icon.");
+    msgBox.setWindowTitle(tr("About Eudaimonia %1").arg(APP_VERSION));
+    msgBox.setText("<p><b>Eudaimonia</b> is Qt-based C++ IDE"
+                   "<p>Copyright (C) 2024 Andrzej Borucki &lt;borucki.andrzej@gmail.com&gt;</p>"
+                   "<p>This is free software; see the source for copying conditions. There is NO warranty; not "
+                   "even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. The source code for Eudaimonia is "
+                   "available at <a href=\"https://github.com/ideorg/eudaimonia\"> "
+                   "https://github.com/ideorg/eudaimonia</a>.</p>");
     msgBox.setIconPixmap(customIcon);
     msgBox.exec();
 }
