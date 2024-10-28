@@ -3,6 +3,7 @@
 #include <QFileDialog>
 #include <QDebug>
 #include <QMessageBox>
+#include "generated/version.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -40,8 +41,14 @@ void MainWindow::openFile() {
 }
 
 void MainWindow::about() {
-
+    QPixmap customIcon(":/share/eudaimonia.png");;
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("About Eudaimonia");
+    msgBox.setText("This is a custom About box with a custom icon.");
+    msgBox.setIconPixmap(customIcon);
+    msgBox.exec();
 }
+
 void MainWindow::aboutQt() {
     QMessageBox::aboutQt(this);
 }

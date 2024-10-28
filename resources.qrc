@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>share/eudaimonia.png</file>
+    </qresource>
+</RCC>
