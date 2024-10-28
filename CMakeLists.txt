@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(KF5SyntaxHighlighting REQUIRED)
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/.git)
     find_package(Git)
@@ -33,4 +34,4 @@ set(QT_RESOURCES
 qt5_add_resources(RESOURCES ${QT_RESOURCES})
 file(GLOB_RECURSE SRC_FILES app/*.cpp)
 add_executable(Eudaimonia ${SRC_FILES} ${RESOURCES})
-target_link_libraries(Eudaimonia Qt5::Widgets)
+target_link_libraries(Eudaimonia Qt5::Widgets KF5::SyntaxHighlighting)

@@ -7,6 +7,7 @@
 #include <QSplitter>
 #include <QTreeView>
 #include "generated/version.hpp"
+#include "PlainTextEdit.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -64,7 +65,7 @@ void MainWindow::openFile() {
             qWarning() << "Failed to open" << fileInfo.filePath() << ":" << f.errorString();
             return;
         }
-        auto *editor = new QPlainTextEdit();
+        auto *editor = new PlainTextEdit(fileInfo.filePath());
         editor->setPlainText(QString::fromUtf8(f.readAll()));
         tabWidget.addTab(editor, fileInfo.fileName());
     }
