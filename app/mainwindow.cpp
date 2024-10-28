@@ -67,6 +67,7 @@ void MainWindow::openFile() {
         }
         auto *editor = new PlainTextEdit(fileInfo.filePath());
         editor->setPlainText(QString::fromUtf8(f.readAll()));
+        editor->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
         tabWidget.addTab(editor, fileInfo.fileName());
         tabWidget.setCurrentWidget(editor);
     }
