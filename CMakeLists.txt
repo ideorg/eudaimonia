@@ -33,5 +33,5 @@ set(QT_RESOURCES
 )
 qt5_add_resources(RESOURCES ${QT_RESOURCES})
 file(GLOB_RECURSE SRC_FILES app/*.cpp)
-add_executable(Eudaimonia ${SRC_FILES} ${RESOURCES})
-target_link_libraries(Eudaimonia Qt5::Widgets KF5::SyntaxHighlighting)
+add_executable(${PROJECT_NAME} ${SRC_FILES} ${RESOURCES})
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets KF5::SyntaxHighlighting)
