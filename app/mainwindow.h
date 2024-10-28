@@ -7,7 +7,7 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    QPlainTextEdit editor;
+    QTabWidget tabWidget;
     void createMenus();
     void openFile();
     void about();

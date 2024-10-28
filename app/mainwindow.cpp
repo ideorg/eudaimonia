@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     createMenus();
+    tabWidget.setTabsClosable(true);
+    tabWidget.setMovable(true);
     auto *mainWidget = new QWidget(this);
     auto *mainLayout = new QVBoxLayout(mainWidget);
     auto splitterHorizontal = new QSplitter;
@@ -21,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     auto *treeView = new QTreeView;
     treeView->setMinimumWidth(5);
     splitterVertical->addWidget(treeView);
-    splitterVertical->addWidget(&editor);
+    splitterVertical->addWidget(&tabWidget);
     auto *bottomPanel = new QWidget;
     QList<int> sizes1;
     sizes1 << 250 << 1000;
@@ -53,13 +55,15 @@ void MainWindow::openFile() {
     QFileDialog dialog(this, tr("Open File"));
     dialog.setOption(QFileDialog::DontUseNativeDialog);
     if (dialog.exec() == QDialog::Accepted) {
-        QString fileName = dialog.selectedFiles().first();
-        QFile f(fileName);
+        QFileInfo fileInfo(dialog.selectedFiles().first());
+        QFile f(fileInfo.filePath());
         if (!f.open(QFile::ReadOnly)) {
-            qWarning() << "Failed to open" << fileName << ":" << f.errorString();
+            qWarning() << "Failed to open" << fileInfo.filePath() << ":" << f.errorString();
             return;
         }
-        editor.setPlainText(QString::fromUtf8(f.readAll()));
+        auto *editor = new QPlainTextEdit();
+        editor->setPlainText(QString::fromUtf8(f.readAll()));
+        tabWidget.addTab(editor, fileInfo.fileName());
     }
 }
 
