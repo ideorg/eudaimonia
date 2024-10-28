@@ -2,8 +2,8 @@
 #define PLAINTEXTEDIT_H
 
 #include <QPlainTextEdit>
-#include <KSyntaxHighlighting/SyntaxHighlighter>
-#include <KSyntaxHighlighting/Repository>
+#include <KF5/KSyntaxHighlighting/SyntaxHighlighter>
+#include <KF5/KSyntaxHighlighting/Repository>
 
 class PlainTextEdit : public QPlainTextEdit {
 Q_OBJECT
