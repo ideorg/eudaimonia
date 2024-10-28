@@ -68,6 +68,7 @@ void MainWindow::openFile() {
         auto *editor = new PlainTextEdit(fileInfo.filePath());
         editor->setPlainText(QString::fromUtf8(f.readAll()));
         tabWidget.addTab(editor, fileInfo.fileName());
+        tabWidget.setCurrentWidget(editor);
     }
 }
 
