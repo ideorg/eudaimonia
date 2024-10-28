@@ -4,6 +4,8 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
+    QIcon appIcon(":/share/eudaimonia.png");
+    app.setWindowIcon(appIcon);
     MainWindow mainWindow;
     mainWindow.resize(1250, 900);
     QScreen* screen = app.primaryScreen();
